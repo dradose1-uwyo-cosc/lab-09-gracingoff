@@ -1,8 +1,8 @@
-# Your Name Here
+# Gracin Goff
 # UWYO COSC 1010
-# Submission Date
-# Lab XX
-# Lab Section:
+# 11/17/2024
+# Lab 09
+# Lab Section: 10
 # Sources, people worked with, help given to:
 # Your
 # Comments
@@ -34,6 +34,31 @@
 # - Assign the parameter for size to a size attribute.
 # - Assign the parameter for sauce to the attribute.
 # - Create the toppings attribute, starting off as a list only holding cheese.
+
+
+class Pizza :
+    def __init__(self,size,sauce = "red"):
+        self.set_size(size)
+        self.sauce = sauce
+        self.toppings = ["cheese"]
+    def set_size(self, size):
+        if not size.isdigit() or int(size) < 10:
+            self.size = 10
+        else:
+            self.size = int(size)
+    def get_size(self):
+        return self.size
+    def get_sauce(self):
+        return self.sauce 
+    def set_sauce(self, sauce):
+        self.sauce = sauce
+    def get_toppings(self):
+        return self.toppings 
+    def set_toppings(self,new_toppings):
+        for t in new_toppings:
+            self.toppings.append(t)
+    def get_topping_count(self):
+        return len(self.toppings)        
 
 
 # You will be creating a Pizzeria class with the following attributes:
@@ -71,6 +96,37 @@
 #   - This will simply return the number of orders.
 
 
+class Pizzeria:
+    def __init__(self):
+        self.pizzas = []
+        number_of_pizzas = len(self.pizzas)
+        price_per_topping = 0.30 
+        price_per_inch = 0.60
+        def placeOrder(self):
+            while True:
+                order_status = input('Would you like to order a pizza? exit to exit')
+                if order_status.lower() == "exit":
+                    break
+                p_size = input('Enter size of pizza as a whole number. exit to exit')
+                if p_size.lower() == "exit":
+                    break
+                p_sauce = input('Enter sauce for pizza. exit to exit')
+                if p_sauce.lower() == "exit":
+                    break
+                order_1 = Pizza(p_size, p_sauce)
+                toppings = []
+                while True:
+                    p_toppings = input('Enter toppings for the pizza. leave blank to exit')
+                    if  not p_toppings == '':
+                        toppings.append(p_toppings)
+                    else:
+                        break
+                order_1.set_toppings(toppings)
+                self.pizzas.append(order_1)
+            def getPrice(pizza):
+                price = (pizza.get_size() * price_per_inch + len(pizza.get_toppings()) * price_per_topping)
+
+        
 # - Declare your pizzeria object.
 # - Enter a while loop to ask if the user wants to order a pizza.
 # - Exit on the word `exit`.
