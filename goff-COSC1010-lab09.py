@@ -99,6 +99,7 @@ class Pizza :
 class Pizzeria:
     def __init__(self):
         self.pizzas = []
+        self.orders = 0
         number_of_pizzas = len(self.pizzas)
         price_per_topping = 0.30 
         price_per_inch = 0.60
@@ -124,7 +125,21 @@ class Pizzeria:
                 order_1.set_toppings(toppings)
                 self.pizzas.append(order_1)
             def getPrice(pizza):
-                price = (pizza.get_size() * price_per_inch + len(pizza.get_toppings()) * price_per_topping)
+                return (pizza.get_size() * price_per_inch + len(pizza.get_toppings()) * price_per_topping)
+            
+            def getReciept(self,pizza):
+                size_price = pizza.getsize() * self.price_per_inch
+                toppings_price = pizza.gettoppingscount() * self.price_per_inch
+                total = size_price + toppings_price 
+                print("Receipt:")
+                print(f"sauce : {pizza.getsuace()}")
+                print(f"size: {pizza.getsize()} inches")
+                print(f"toppings: {', '.join(pizza.gettoppings())}")
+                print(f"price for size: ${size_price:.2f}")
+                print(f"price for toppings: ${toppings_price:.2f}")
+                print(f"total price: ${total:.2f}")
+            def getNumberOfOrders(self):
+                return self.orders
 
         
 # - Declare your pizzeria object.
@@ -134,6 +149,16 @@ class Pizzeria:
 # - After the order is placed, call the getReceipt() method.
 # - Repeat the loop as needed.
 # - AFTER the loop, print how many orders were placed.
+
+pizzeria = Pizzeria() 
+while True:
+    order = input('Would you like to order a pizza? enter exit to quit:')
+    if order.lower() == "exit":
+        break 
+    pizza = pizzeria.placeorder()
+    pizzeria.getReciept(pizza)
+
+print (f'total number of orders placed : {pizzeria.getNumberOfOrders()}')
 
 
 # Example output:
